@@ -4,11 +4,15 @@ require 'open-uri'
 require 'http'
 require 'json'
 
-# get('/') do
-#   "
-#   <h1>Currency pairs</h1>
-#   <p>Define some routes in app.rb</p>
-#   "
-# end
+get('/') do
+  
+  symbols_url = HTTP.get("https://api.exchangerate.host/symbols")
+  parsed_response = JSON.parse(symbols_url)
+  symbols = parsed_response.fetch("symbols")
+  @symbol = []
+  symbols.each do |key, value|
+    @symbol.push(key)
+  end
 
-
+  erb(:symbol_list)
+end
