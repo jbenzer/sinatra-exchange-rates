@@ -4,15 +4,21 @@ require 'open-uri'
 require 'http'
 require 'json'
 
-get('/') do
-  
-  symbols_url = HTTP.get("https://api.exchangerate.host/symbols")
-  parsed_response = JSON.parse(symbols_url)
-  symbols = parsed_response.fetch("symbols")
-  @symbol = []
-  symbols.each do |key, value|
-    @symbol.push(key)
-  end
+symbols_url = HTTP.get("https://api.exchangerate.host/symbols")
+parsed_response = JSON.parse(symbols_url)
+symbols = parsed_response.fetch("symbols")
+$symbol = []
+symbols.each do |key, value|
+  $symbol.push(key)
+end
 
+get('/') do
   erb(:symbol_list)
+end
+
+
+get('/:symbol1') do
+  @symbol_1 = params.fetch("symbol1")
+
+  erb(:convert)
 end
