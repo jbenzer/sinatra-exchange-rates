@@ -10,4 +10,7 @@ require 'json'
 # symbols.each do |key, value|
 #   @symbol.push(key)
 # end
-pp @symbol
+# convert_url = HTTP.get("https://api.exchangerate.host/convert?from=USD&to=CNY")
+# parsed = JSON.parse(convert_url)
+# convert = parsed.fetch("query").fetch("amount")
+# pp convert.class

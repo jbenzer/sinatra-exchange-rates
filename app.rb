@@ -20,5 +20,17 @@ end
 get('/:symbol1') do
   @symbol_1 = params.fetch("symbol1")
 
-  erb(:convert)
+  erb(:symbol_pair)
 end
+
+get('/:sym_a/:sym_b') do
+  @sym_a = params.fetch("sym_a")
+  @sym_b = params.fetch("sym_b")
+
+  convert_url = "https://api.exchangerate.host/convert?from=" + @sym_a + "&to=" + @sym_b
+  resp = HTTP.get(convert_url)
+  parsed_convert = JSON.parse(resp)
+  @result = parsed_convert.fetch("info").fetch("rate").to_s
+
+  erb(:convert)
+end  

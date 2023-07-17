@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Convert <%= @symbol_1 %></h1>
+    <p>Go <a href="/">back</a>.</p>
+    <ul>
+      <% $symbol.each do |symbol2| %>
+        <li>
+          <a href="/<%= @symbol_1 %>/<%= symbol2 %>">Convert 1 <%=@symbol_1%> to <%= symbol2 %>...</a>
+        </li>
+     <% end %>
+    </ul>
+  </body>
+</html>

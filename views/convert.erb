@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>Convert <%= @symbol_1 %></h1>
-    <p>Go <a href="/">back</a>.</p>
-    <ul>
-      <% $symbol.each do |symbol2| %>
-        <li>
-          <a href="/<%= @symbol_1 %>/<%= symbol2 %>">Convert 1 <%=@symbol_1%> to <%= symbol2 %>...</a>
-        </li>
-     <% end %>
-    </ul>
+    <h1>Convert <%= @sym_a %> to <%= @sym_b %></h1>
+
+    <p>1 <%= @sym_a %> equals <%= @result %> <%= @sym_b %></p>
+
+    <p>Go <a href="/<%=@sym_a%>">back</a>.</p>
   </body>
 </html>
